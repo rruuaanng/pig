@@ -24,7 +24,7 @@ typedef long long int msize_t;
 
 msize_t read_mem(enum mem_type m);
 
-int refresh();
+static int __refresh();
 
 static int __is_exists(const char *_s);
 
