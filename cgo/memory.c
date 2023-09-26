@@ -6,7 +6,7 @@
 static msize_t mtable[MTableSize];
 
 // 资源名称
-static const char *mname[] = {
+static const char *resource[] = {
     "MemTotal",
     "MemFree",
     "MemAvailable",
@@ -32,7 +32,7 @@ static const char *mname[] = {
  */
 msize_t read_mem(enum mem_type m)
 {
-    refresh();
+    __refresh();
     return mtable[m];
 }
 
@@ -41,7 +41,7 @@ msize_t read_mem(enum mem_type m)
  * @param void
  * @return int 是否执行
  */
-int refresh()
+static int __refresh()
 {
     int i = 0;
     char *c;
@@ -73,7 +73,7 @@ int refresh()
 static int __is_exists(const char *_s)
 {
     for (int i = 0; i < MTableSize; i++){
-        if (!strcmp(_s, mname[i]))
+        if (!strcmp(_s, resource[i]))
             return 1;
     }
     return 0;
