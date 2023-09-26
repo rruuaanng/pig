@@ -15,7 +15,8 @@
 int read_mem(enum cpu_info m)
 {
     __refresh();
-    return mtable[m];
+    // return mtable[m];
+    return 0;
 }
 
 /**
