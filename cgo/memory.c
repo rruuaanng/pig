@@ -5,7 +5,7 @@
 // 内存资源表
 static msize_t mtable[MTableSize];
 
-// 资源名称
+// 资源名称表
 static const char *resource[] = {
     "MemTotal",
     "MemFree",
