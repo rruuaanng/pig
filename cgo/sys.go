@@ -29,42 +29,41 @@ const (
 
 // 读取内存使用情况
 func Memory(v string) int64 {
-	C.refresh()
-
+	
 	// 获取对应内存资源使用情况
 	switch v {
 	case "memtotal":
-		return int64(C.read_mem(C.MemTotal))
+		return int64(C.read_mem(C.MEMTOTAL))
 	case "memfree":
-		return int64(C.read_mem(C.MemFree))
+		return int64(C.read_mem(C.MEMFREE))
 	case "memavailable":
-		return int64(C.read_mem(C.MemAvailable))
+		return int64(C.read_mem(C.MEMAVAILABLE))
 	case "buffers":
-		return int64(C.read_mem(C.Buffers))
+		return int64(C.read_mem(C.BUFFERS))
 	case "cached":
-		return int64(C.read_mem(C.Cached))
+		return int64(C.read_mem(C.CACHED))
 	case "active":
-		return int64(C.read_mem(C.Active))
+		return int64(C.read_mem(C.ACTIVE))
 	case "inactive":
-		return int64(C.read_mem(C.Inactive))
+		return int64(C.read_mem(C.INACTIVE))
 	case "mlocked":
-		return int64(C.read_mem(C.Mlocked))
+		return int64(C.read_mem(C.MLOCKED))
 	case "swaptotal":
-		return int64(C.read_mem(C.SwapTotal))
+		return int64(C.read_mem(C.SWAPTOTAL))
 	case "swapfree":
-		return int64(C.read_mem(C.SwapFree))
+		return int64(C.read_mem(C.SWAPFREE))
 	case "dirty":
-		return int64(C.read_mem(C.Dirty))
+		return int64(C.read_mem(C.DIRTY))
 	case "writeback":
-		return int64(C.read_mem(C.Writeback))
+		return int64(C.read_mem(C.WRITEBACK))
 	case "anonpages":
-		return int64(C.read_mem(C.AnonPages))
+		return int64(C.read_mem(C.ANONPAGES))
 	case "mapped":
-		return int64(C.read_mem(C.Mapped))
+		return int64(C.read_mem(C.MAPPED))
 	case "shmem":
-		return int64(C.read_mem(C.Shmem))
+		return int64(C.read_mem(C.SHMEM))
 	case "slab":
-		return int64(C.read_mem(C.Slab))
+		return int64(C.read_mem(C.SLAB))
 	}
 
 	return -1
