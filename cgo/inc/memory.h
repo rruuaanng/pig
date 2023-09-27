@@ -1,24 +1,25 @@
 #ifndef _CGO_MEMORY_H
 #define _CGO_MEMORY_H
 
+
 enum mem_type{
-    MemTotal = 0,
-    MemFree,
-    MemAvailable,
-    Buffers,
-    Cached,
-    Active,
-    Inactive,
-    Mlocked,
-    SwapTotal,
-    SwapFree,
-    Dirty,
-    Writeback,
-    AnonPages,
-    Mapped,
-    Shmem,
-    Slab,
-	MTableSize
+    MEMTOTAL = 0,
+    MEMFREE,
+    MEMAVAILABLE,
+    BUFFERS,
+    CACHED,
+    ACTIVE,
+    INACTIVE,
+    MLOCKED,
+    SWAPTOTAL,
+    SWAPFREE,
+    DIRTY,
+    WRITEBACK,
+    ANONPAGES,
+    MAPPED,
+    SHMEM,
+    SLAB,
+    MTABLESIZE
 };
 typedef long long int msize_t;
 
