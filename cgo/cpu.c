@@ -2,7 +2,7 @@
 #include "inc/cpu.h"
 
 // CPU信息表
-static string ctable[TABLESIZE];
+static info ctable[TABLESIZE];
 
 // 信息名称表
 static const char *infos[] = {

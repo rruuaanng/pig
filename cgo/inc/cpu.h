@@ -13,7 +13,7 @@ enum cpu_info{
     ADDRESS_SIZES,
     TABLESIZE
 };
-typedef const char* string;
+typedef const char* info;
 
 int read_cpu(enum cpu_info m);
 
