@@ -2,7 +2,7 @@
 #define _CGO_MEMORY_H
 
 
-enum mem_type{
+enum {
     MEMTOTAL = 0,
     MEMFREE,
     MEMAVAILABLE,
@@ -21,9 +21,10 @@ enum mem_type{
     SLAB,
     MEM_TABLESIZE
 };
+typedef unsigned int mem_type;
 typedef long long int msize_t;
 
-msize_t read_mem(enum mem_type m);
+msize_t read_mem(mem_type m);
 
 static int __refresh();
 

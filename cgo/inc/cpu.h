@@ -2,7 +2,7 @@
 #define _CGO_CPU_H
 
 
-enum cpu_stat{
+enum {
     USER_TIME = 0,
     USER_NICE_TIME,
     SYSTEM_TIME,
@@ -15,9 +15,10 @@ enum cpu_stat{
     GUEST_NICE_TIME,
     CPU_TABLESIZE
 };
+typedef unsigned int cpu_stat;
 typedef long long int ms_t;
 
-ms_t read_cpu_stat(enum cpu_stat c);
+ms_t read_cpu_stat(cpu_stat c);
 
 static int __refresh();
 

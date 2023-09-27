@@ -11,7 +11,7 @@ static ms_t cpu_vector[CPU_TABLESIZE];
  * @param c CPU状态
  * @return ms_t 占用时间(毫秒)
  */
-ms_t read_cpu_stat(enum cpu_stat c)
+ms_t read_cpu_stat(cpu_stat c)
 {
     __refresh();
     return cpu_vector[c];

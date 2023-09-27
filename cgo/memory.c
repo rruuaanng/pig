@@ -30,7 +30,7 @@ static const char *resources[] = {
  * @param m 内存类型
  * @return msize_t 占用字节(KB) 
  */
-msize_t read_mem(enum mem_type m)
+msize_t read_mem(mem_type m)
 {
     __refresh();
     return mtable[m];

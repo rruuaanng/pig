@@ -5,94 +5,58 @@ package cgo
 #include "inc/cpu.h"
 */
 import "C"
-// 内存类型
 
-const (
-	MemTotal int = iota
-	MemFree
-	MemAvailable
-	Buffers
-	Cached
-	Active
-	Inactive
-	Mlocked
-	SwapTotal
-	SwapFree
-	Dirty
-	Writeback
-	AnonPages
-	Mapped
-	Shmem
-	Slab
-)
+// 
+var memMap = map[string]C.uint{
+	"memtotal":     C.MEMTOTAL,
+	"memfree":      C.MEMFREE,
+	"memavailable": C.MEMAVAILABLE,
+	"buffers":      C.BUFFERS,
+	"cached":       C.CACHED,
+	"active":       C.ACTIVE,
+	"inactive":     C.INACTIVE,
+	"mlocked":      C.MLOCKED,
+	"swaptotal":    C.SWAPTOTAL,
+	"swapfree":     C.SWAPFREE,
+	"dirty":        C.DIRTY,
+	"writeback":    C.WRITEBACK,
+	"anonpages":    C.ANONPAGES,
+	"mapped":       C.MAPPED,
+	"shmem":        C.SHMEM,
+	"slab":         C.SLAB,
+}
 
 // 读取内存使用情况
 func Memory(v string) int64 {
 	
-	// 获取对应内存资源使用情况
-	switch v {
-	case "memtotal":
-		return int64(C.read_mem(C.MEMTOTAL))
-	case "memfree":
-		return int64(C.read_mem(C.MEMFREE))
-	case "memavailable":
-		return int64(C.read_mem(C.MEMAVAILABLE))
-	case "buffers":
-		return int64(C.read_mem(C.BUFFERS))
-	case "cached":
-		return int64(C.read_mem(C.CACHED))
-	case "active":
-		return int64(C.read_mem(C.ACTIVE))
-	case "inactive":
-		return int64(C.read_mem(C.INACTIVE))
-	case "mlocked":
-		return int64(C.read_mem(C.MLOCKED))
-	case "swaptotal":
-		return int64(C.read_mem(C.SWAPTOTAL))
-	case "swapfree":
-		return int64(C.read_mem(C.SWAPFREE))
-	case "dirty":
-		return int64(C.read_mem(C.DIRTY))
-	case "writeback":
-		return int64(C.read_mem(C.WRITEBACK))
-	case "anonpages":
-		return int64(C.read_mem(C.ANONPAGES))
-	case "mapped":
-		return int64(C.read_mem(C.MAPPED))
-	case "shmem":
-		return int64(C.read_mem(C.SHMEM))
-	case "slab":
-		return int64(C.read_mem(C.SLAB))
+	if m, ok := memMap[v]; ok {
+		return int64(C.read_mem(m))
 	}
 
 	return -1
 }
 
+// CPU状态表
+var statMap = map[string]C.uint{
+	"user_time":      C.USER_TIME,
+	"user_nice_time": C.USER_NICE_TIME,
+	"system_time":    C.SYSTEM_TIME,
+	"idle_time":      C.IDLE_TIME,
+	"iowait_time":    C.IOWAIT_TIME,
+	"irq_time":       C.IRQ_TIME,
+	"soft_irq_time":  C.SOFT_IRQ_TIME,
+	"steal_time":     C.STEAL_TIME,
+	"guest_time":     C.GUEST_TIME,
+	"guest_nice_time": C.GUEST_NICE_TIME,
+}
+
 // 读取cpu使用状态
 func Cpu(v string) int64{
 
-	switch v{
-	case "user_time":
-		return int64(C.read_cpu_stat(C.USER_TIME))
-	case "user_nice_time":
-		return int64(C.read_cpu_stat(C.USER_NICE_TIME))
-	case "system_time":
-		return int64(C.read_cpu_stat(C.SYSTEM_TIME))
-	case "idle_time":
-		return int64(C.read_cpu_stat(C.IDLE_TIME))
-	case "iowait_time":
-		return int64(C.read_cpu_stat(C.IOWAIT_TIME))
-	case "irq_time":
-		return int64(C.read_cpu_stat(C.IRQ_TIME))
-	case "soft_irq_time":
-		return int64(C.read_cpu_stat(C.SOFT_IRQ_TIME))
-	case "steal_time":
-		return int64(C.read_cpu_stat(C.STEAL_TIME))
-	case "guest_time":
-		return int64(C.read_cpu_stat(C.GUEST_TIME))
-	case "guest_nice_time":
-		return int64(C.read_cpu_stat(C.GUEST_NICE_TIME))
+	// 检查状态是否存在
+	if stat, ok := statMap[v]; ok {
+		return int64(C.read_cpu_stat(stat))
 	}
-
+	
 	return -1
 }
