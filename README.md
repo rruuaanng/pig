@@ -1,3 +1,3 @@
 # pig
 
-machine status query api for linux
+API to read linux memory resource usage
