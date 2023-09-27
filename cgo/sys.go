@@ -1,7 +1,7 @@
 package cgo
 
 /*
-#include "memory.h"
+#include "inc/memory.h"
 */
 import "C"
 
