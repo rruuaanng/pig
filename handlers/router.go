@@ -10,8 +10,6 @@ func Register() {
 	router = gin.Default()
 	// memory
 	router.GET("/api/memory/:args", linuxMemHandler)
-	// cpu
-	router.GET("/api/cpu/:args", linuxCpuHandler)
 }
 
 // 启动服务
