@@ -15,7 +15,7 @@ enum cpu_info{
 };
 typedef const char* info_t;
 
-int read_cpu(enum cpu_info m);
+info_t read_cpu_info(enum cpu_info m);
 
 static int __refresh();
 

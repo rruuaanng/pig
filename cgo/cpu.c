@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "inc/cpu.h"
 
 // CPU信息表
@@ -20,9 +21,10 @@ static const char *infos[] = {
  * @param m 内存类型
  * @return msize_t 占用字节(KB) 
  */
-int read_cpu_info(enum cpu_info m)
+info_t read_cpu_info(enum cpu_info m)
 {
     __refresh();
+
     // return mtable[m];
     return 0;
 }
@@ -34,6 +36,18 @@ int read_cpu_info(enum cpu_info m)
  */
 static int __refresh()
 {
+    int i = 0;
+    char *c;
+    info_t value;
+    char buf[64],name[32];
+    FILE *fp = fopen("/proc/cpuinfo","r");
+    if (fp == NULL)
+        return 1;
+
+    while(fgets(buf,sizeof(buf),fp)){
+        printf("%s",buf);
+    }
+
     return 0;
 }
 
@@ -45,5 +59,9 @@ static int __refresh()
  */
 static int __is_exists(const char *_s)
 {
+    for (int i = 0; i < CPU_TABLESIZE; i++){
+        if (!strcmp(_s, infos[i]))
+            return 1;
+    }
     return 0;
 }

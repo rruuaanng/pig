@@ -69,6 +69,7 @@ func Memory(v string) int64 {
 	return -1
 }
 
-func Cpu(v string) {
-
+func Cpu(v string) string{
+	C.read_cpu_info(C.VENDOR_ID)
+	return ""
 }
