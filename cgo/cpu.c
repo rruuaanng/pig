@@ -2,17 +2,25 @@
 #include "inc/cpu.h"
 
 // CPU信息表
-// static msize_t mtable[MTableSize];
+static string ctable[TABLESIZE];
 
 // 信息名称表
-static const char *infos
+static const char *infos[] = {
+    "cpu MHz",
+    "cache size",
+    "siblings",
+    "cpu cores",
+    "clflush size",
+    "cache alignment",
+    "address sizes"
+};
 
 /**
  * @brief 读取内存使用情况
  * @param m 内存类型
  * @return msize_t 占用字节(KB) 
  */
-int read_mem(enum cpu_info m)
+int read_cpu_info(enum cpu_info m)
 {
     __refresh();
     // return mtable[m];

@@ -3,15 +3,17 @@
 
 
 enum cpu_info{
-    CPU_MHZ = 0,
+    VENDOR_ID = 0,
+    CPU_MHZ,
     CACHE_SIZE,
     SIBLINGS,
     CPU_CORES,
     CLFLUSH_SIZE,
     CACHE_ALIGNMENT,
-    ADDRESS_SIZES
+    ADDRESS_SIZES,
+    TABLESIZE
 };
-
+typedef const char* string;
 
 int read_cpu(enum cpu_info m);
 
