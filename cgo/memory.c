@@ -3,7 +3,7 @@
 #include "inc/memory.h"
 
 // 内存资源表
-static msize_t mtable[MTABLESIZE];
+static msize_t mtable[TABLESIZE];
 
 // 资源名称表
 static const char *resources[] = {

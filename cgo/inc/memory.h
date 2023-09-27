@@ -19,7 +19,7 @@ enum mem_type{
     MAPPED,
     SHMEM,
     SLAB,
-    MTABLESIZE
+    TABLESIZE
 };
 typedef long long int msize_t;
 
