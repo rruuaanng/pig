@@ -30,6 +30,7 @@ static int __refresh()
     if (fp == NULL)
         return 1;
 
+    // 读取CPU运行状态(所有核心和)
     if (!fgets(buf,sizeof(buf),fp))
         return 1;
     char *state = strtok(buf," ");
