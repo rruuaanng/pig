@@ -6,8 +6,7 @@ package cgo
 */
 import "C"
 
-// 
-var memMap = map[string]C.uint{
+var MemMap = map[string]C.uint{
 	"memtotal":     C.MEMTOTAL,
 	"memfree":      C.MEMFREE,
 	"memavailable": C.MEMAVAILABLE,
@@ -29,15 +28,14 @@ var memMap = map[string]C.uint{
 // 读取内存使用情况
 func Memory(v string) int64 {
 	
-	if m, ok := memMap[v]; ok {
+	if m, ok := MemMap[v]; ok {
 		return int64(C.read_mem(m))
 	}
 
 	return -1
 }
 
-// CPU状态表
-var statMap = map[string]C.uint{
+var CpuStatMap = map[string]C.uint{
 	"user_time":      C.USER_TIME,
 	"user_nice_time": C.USER_NICE_TIME,
 	"system_time":    C.SYSTEM_TIME,
@@ -54,7 +52,7 @@ var statMap = map[string]C.uint{
 func Cpu(v string) int64{
 
 	// 检查状态是否存在
-	if stat, ok := statMap[v]; ok {
+	if stat, ok := CpuStatMap[v]; ok {
 		return int64(C.read_cpu_stat(stat))
 	}
 	
