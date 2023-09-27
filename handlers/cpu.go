@@ -25,5 +25,4 @@ func linuxCpuHandler(ctx *gin.Context){
 			"note": "unit: MS(all core sum)",
 		})
 	}
-
 }
