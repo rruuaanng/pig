@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "inc/memory.h"
+#include "memory.h"
 
 // 内存资源表
 static msize_t mtable[MEM_TABLESIZE];
