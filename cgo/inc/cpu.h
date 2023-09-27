@@ -11,9 +11,9 @@ enum cpu_info{
     CLFLUSH_SIZE,
     CACHE_ALIGNMENT,
     ADDRESS_SIZES,
-    TABLESIZE
+    CPU_TABLESIZE
 };
-typedef const char* info;
+typedef const char* info_t;
 
 int read_cpu(enum cpu_info m);
 

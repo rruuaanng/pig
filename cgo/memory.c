@@ -3,7 +3,7 @@
 #include "inc/memory.h"
 
 // 内存资源表
-static msize_t mtable[TABLESIZE];
+static msize_t mtable[MEM_TABLESIZE];
 
 // 资源名称表
 static const char *resources[] = {
@@ -52,7 +52,7 @@ static int __refresh()
         return 1;
     
     // 解析/proc/meminfo
-    while (i < TABLESIZE && fgets(buf, sizeof(buf), fp)) {
+    while (i < MEM_TABLESIZE && fgets(buf, sizeof(buf), fp)) {
         sscanf(buf, "%s %lld", name, &value);
         // 去掉字符串中的冒号
         if (c = strchr(name, ':'))
@@ -72,7 +72,7 @@ static int __refresh()
  */
 static int __is_exists(const char *_s)
 {
-    for (int i = 0; i < TABLESIZE; i++){
+    for (int i = 0; i < MEM_TABLESIZE; i++){
         if (!strcmp(_s, resources[i]))
             return 1;
     }
