@@ -1,11 +1,12 @@
 package main
 
 import (
-	"pig/handlers"
+	// "pig/handlers"
+	"pig/cgo"
 )
 
 func main() {
-	handlers.Register()
-
-	handlers.Start()
+	// handlers.Register()
+	cgo.Cpu("")
+	// handlers.Start()
 }
