@@ -12,6 +12,8 @@ func Register() {
 	router.GET("/api/memory/:args", linuxMemHandler)
 	// CPU
 	router.GET("/api/cpu/:args",linuxCpuHandler)
+	// net
+	router.GET("/api/disk/:args",linuxNetHandler)
 }
 
 // 启动服务
