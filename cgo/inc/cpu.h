@@ -3,7 +3,13 @@
 
 
 enum cpu_info{
-    a = 1
+    CPU_MHZ = 0,
+    CACHE_SIZE,
+    SIBLINGS,
+    CPU_CORES,
+    CLFLUSH_SIZE,
+    CACHE_ALIGNMENT,
+    ADDRESS_SIZES
 };
 
 

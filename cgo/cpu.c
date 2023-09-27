@@ -5,7 +5,7 @@
 // static msize_t mtable[MTableSize];
 
 // 信息名称表
-
+static const char *infos
 
 /**
  * @brief 读取内存使用情况
