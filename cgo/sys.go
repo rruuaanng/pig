@@ -61,6 +61,6 @@ func Cpu(v string) int64{
 }
 
 func Device(v string) int64{
-	C.read_net_byte(1)
+	C.(1)
 	return 0
 }
