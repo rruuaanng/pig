@@ -60,7 +60,17 @@ func Cpu(v string) int64{
 	return -1
 }
 
+
+var RandNumMap = map[string]C.uint{
+	"system": C.SYSTEM_RANDOM,
+	"user": C.USER_RANDOM,
+}
+
 // 读取随机数
-func Random(v string) int64{
-	return int64(C.read_random_num())
+func Random(v string, n int) int{
+
+	if rdt, ok := RandNumMap[v]; ok{
+		return int(C.read_random_num(rdt,C.int(n)))
+	}
+	return -1
 }

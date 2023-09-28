@@ -13,7 +13,7 @@ func Register() {
 	// CPU
 	router.GET("/api/cpu/:args",linuxCpuHandler)
 	// net
-	router.GET("/api/disk/:args",linuxNetHandler)
+	router.GET("/api/random/:type/:lim",linuxRandomHandler)
 }
 
 // 启动服务

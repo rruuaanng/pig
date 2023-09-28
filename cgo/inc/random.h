@@ -6,9 +6,10 @@ enum {
     SYSTEM_RANDOM = 0,
     USER_RANDOM
 };
-typedef long long int randn_t;
+typedef unsigned int rand_type;
 
-randn_t read_random_num();
+
+int read_random_num(rand_type r, int lim);
 
 
 #endif // _CGO_DEVICE_H

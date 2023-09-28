@@ -1,40 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "inc/random.h"
 
 
+/**
+ * @brief 读取(硬件或系统)的随机数
+ * @param r 随机数生成类型
+ * @param lim 范围在[-n,n]以内
+ * @return int 随机数
+ */
+int read_random_num(rand_type r, int lim) {
+    int value;
+    FILE *fp;
 
-randn_t read_random_num()
-{
-    // 打开 /dev/random 设备文件
-    FILE *fp = fopen("/dev/random", "rb");
+    switch (r){
+    case SYSTEM_RANDOM:
+        fp = fopen("/dev/random", "rb");
+        break;
+    case USER_RANDOM:
+        fp = fopen("/dev/urandom", "rb");
+        break;
+    default: 
+        return 1;
+    }
     
-    if (!fp) {
-        perror("无法打开 /dev/random");
-        return 1;
+    if (!fp) 
+        return 1; // 返回负数表示失败
+
+    if (!fread(&value, sizeof(int), 1, fp)) {
+        fclose(fp);
+        return 1; // 返回负数表示失败
     }
 
-    unsigned char buffer[16];  // 用于存储随机数的缓冲区
-
-    // 使用 fread 从 /dev/random 中读取随机数
-    size_t bytesRead = fread(buffer, 1, sizeof(buffer), randomFile);
-
-    if (bytesRead != sizeof(buffer)) {
-        perror("读取 /dev/random 时发生错误");
-        fclose(randomFile);
-        return 1;
-    }
-
-    // 打印读取到的随机数
-    printf("随机数：");
-
-    for (size_t i = 0; i < sizeof(buffer); i++) {
-        printf("%d ", buffer[i]);
-    }
-
-    printf("\n");
-
-    // 关闭设备文件
-    fclose(randomFile);
-
-    return 0;
+    fclose(fp);
+    return value % lim; 
 }
