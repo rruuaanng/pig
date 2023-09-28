@@ -27,7 +27,7 @@ static int __refresh()
     ms_t ms = 0;
     char buf[64];
     FILE *fp = fopen("/proc/stat","r");
-    if (fp == NULL)
+    if (!fp)
         return 1;
 
     // 读取CPU运行状态(所有核心和)
@@ -40,6 +40,7 @@ static int __refresh()
         cpu_vector[i++] = ms;
     }
 
+    fclose(fp);
     return 0;
 }
 

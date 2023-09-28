@@ -3,14 +3,12 @@
 
 
 enum {
-    CHARACTER_DEVICES = 0,
-    BLOCK_DEVICES
+    SYSTEM_RANDOM = 0,
+    USER_RANDOM
 };
-typedef char* dev_name;
+typedef long long int randn_t;
 
-dev_name read_dev_info();
-
-static int __refresh();
+randn_t read_random_num();
 
 
 #endif // _CGO_DEVICE_H

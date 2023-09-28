@@ -3,7 +3,7 @@ package cgo
 /*
 #include "inc/memory.h"
 #include "inc/cpu.h"
-#include "inc/device.h"
+#include "inc/random.h"
 */
 import "C"
 
@@ -60,7 +60,7 @@ func Cpu(v string) int64{
 	return -1
 }
 
-func Device(v string) int64{
-	C.(1)
-	return 0
+// 读取随机数
+func Random(v string) int64{
+	return int64(C.read_random_num())
 }

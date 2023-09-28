@@ -7,6 +7,6 @@ import (
 
 func main() {
 	// handlers.Register()
-	cgo.Net("")
+	cgo.Random("")
 	// handlers.Start()
 }

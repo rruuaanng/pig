@@ -48,7 +48,7 @@ static int __refresh()
     msize_t value;
     char buf[64],name[32];
     FILE *fp = fopen("/proc/meminfo","r");
-    if (fp == NULL)
+    if (!fp)
         return 1;
     
     // 解析/proc/meminfo
