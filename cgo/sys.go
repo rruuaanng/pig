@@ -3,7 +3,7 @@ package cgo
 /*
 #include "inc/memory.h"
 #include "inc/cpu.h"
-#include "inc/net.h"
+#include "inc/device.h"
 */
 import "C"
 
@@ -60,7 +60,7 @@ func Cpu(v string) int64{
 	return -1
 }
 
-func Net(v string) int64{
+func Device(v string) int64{
 	C.read_net_byte(1)
 	return 0
 }
